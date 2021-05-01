@@ -1,0 +1,9 @@
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\bin\Debug\MC_Prelauncher.exe.config
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\bin\Debug\MC_Prelauncher.exe
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\bin\Debug\MC_Prelauncher.pdb
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\obj\Debug\MC_Prelauncher.csprojAssemblyReference.cache
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\obj\Debug\MC_Prelauncher.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\obj\Debug\MC_Prelauncher.exe
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\obj\Debug\MC_Prelauncher.pdb
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\obj\Debug\MC_Prelauncher.Properties.Resource1.resources
+C:\Users\Admin\Coding\Projects\MC_Prelauncher\MC_Prelauncher\obj\Debug\MC_Prelauncher.csproj.GenerateResource.cache

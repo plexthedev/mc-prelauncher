@@ -19,7 +19,7 @@ namespace MC_Prelauncher
                 $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher",
                 $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\mods",
                 $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings",
-                $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfig"
+                $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs"
             };
 
             foreach (string dir in reqdir)
@@ -30,16 +30,13 @@ namespace MC_Prelauncher
                     Directory.CreateDirectory(dir);
                 }
             }
-            if (gay > 0) { Console.WriteLine("You were missing some directories, so I kindly added them for you :)"); Thread.Sleep(1000); }
+            if (gay > 0) { Console.WriteLine("You were missing some directories, so I kindly added them for you :)"); Thread.Sleep(1000); Console.Clear(); }
         }
         static void Main()
         {
             Setup();
             ModFolderDetect GetModFolder = new ModFolderDetect();
             string currentModFolder = GetModFolder.CompareCurrent();
-            
-
-            // code above is bad, but works lol
 
             string pathToLauncher = "C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe";
             Console.WriteLine("Minecraft Pre-launcher by Trollsta_");

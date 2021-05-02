@@ -37,6 +37,16 @@ namespace MC_Prelauncher
                 CommandList Commands = new CommandList();
                 switch (y[0])
                 {
+                    // editmode
+                    case "editmode":
+                        if (y.Length <= 1)
+                        {
+                            Console.WriteLine("No modfolder specified.\n");
+                            break;
+                        }
+                        Editmode editmode = new Editmode();
+                        editmode.editmode(y[1]);
+                        break;
                     // mod folder set
                     case "smf":
                         Commands.setModFolder(y[1]);

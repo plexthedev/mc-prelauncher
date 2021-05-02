@@ -40,6 +40,10 @@ namespace MC_Prelauncher
                             {
                                 File.Move(unusedStoragePath + "\\" + mod, modsPath + "\\" + mod);
                             }
+                            else
+                            {
+                                Console.WriteLine("{0} not found, skipping", mod);
+                            }
                         }
                     }
                 }

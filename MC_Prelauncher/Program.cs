@@ -5,22 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
+
 namespace MC_Prelauncher
 {
     class Program
     {
+        static void Setup()
+        {
+            int gay = 0;
+            string[] reqdir =
+            {
+                $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher",
+                $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\mods",
+                $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings",
+                $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfig"
+            };
+
+            foreach (string dir in reqdir)
+            {
+                if (!Directory.Exists(dir))
+                {
+                    gay++;
+                    Directory.CreateDirectory(dir);
+                }
+            }
+            if (gay > 0) { Console.WriteLine("You were missing some directories, so I kindly added them for you :)"); Thread.Sleep(1000); }
+        }
         static void Main()
         {
+            Setup();
             ModFolderDetect GetModFolder = new ModFolderDetect();
             string currentModFolder = GetModFolder.CompareCurrent();
-            if (!Directory.Exists("C:\\Users\\Admin\\AppData\\Roaming\\.minecraft\\Prelauncher"))
-            {
-                Directory.CreateDirectory("C:\\Users\\Admin\\AppData\\Roaming\\.minecraft\\Prelauncher");
-            }
-            if (!Directory.Exists("C:\\Users\\Admin\\AppData\\Roaming\\.minecraft\\Prelauncher\\mods"))
-            {
-                Directory.CreateDirectory("C:\\Users\\Admin\\AppData\\Roaming\\.minecraft\\Prelauncher\\mods");
-            }
+            
 
             // code above is bad, but works lol
 

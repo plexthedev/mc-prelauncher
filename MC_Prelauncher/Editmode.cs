@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MC_Prelauncher
 {
@@ -25,6 +26,22 @@ namespace MC_Prelauncher
 
                     case "remove": // remove any entry from array that matched cmdArgs[1], unless it is named 'buffer'
                         break;
+
+                    case "list": // list all mods in current modfolder (obviously)
+                        foreach (string modname in File.ReadAllText($@"C:\Users\Admin\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{modfolder}").Split(';'))
+                        {
+                            if (modname.ToLower() != "buffer") Console.WriteLine(modname);
+                        }
+                        Console.WriteLine();
+                        break;
+
+                    case "exit":
+                        Console.Clear();
+                        ModFolderDetect GetModFolder = new ModFolderDetect();
+                        string currentModFolder = GetModFolder.CompareCurrent();
+                        Console.WriteLine("Minecraft Pre-launcher by Trollsta_");
+                        Console.WriteLine("Current mod folder: {0}", currentModFolder);
+                        return;
                 }
             }
         }

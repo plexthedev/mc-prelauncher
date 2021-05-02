@@ -44,6 +44,11 @@ namespace MC_Prelauncher
                             Console.WriteLine("No modfolder specified.\n");
                             break;
                         }
+                        else if (!File.Exists($@"C:\Users\Admin\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}"))
+                        {
+                            Console.WriteLine("No such modfolder exists.\n");
+                            break;
+                        }
                         Editmode editmode = new Editmode();
                         editmode.editmode(y[1]);
                         break;

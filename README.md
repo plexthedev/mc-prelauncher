@@ -1,1 +1,1 @@
-"# mc-prelauncher" 
+A simple program that launches before your minecraft launcher, used to configure forge mod folders.

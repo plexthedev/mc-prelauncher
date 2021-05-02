@@ -25,6 +25,38 @@ namespace MC_Prelauncher
                         break;
 
                     case "remove": // remove any entry from array that matched cmdArgs[1], unless it is named 'buffer'
+                        if (cmdArgs.Length <= 1) break;
+                        if (cmdArgs[1].ToLower() == "buffer") { Console.WriteLine("You cannot remove the buffer element from a mod folder!"); break; }
+                        string[] arr = File.ReadAllText($@"C:\Users\Admin\AppData\Local\Prelauncher\settings\folderconfigs\{modfolder}").Split(';');
+                        var list = new List<string>(arr);
+                        
+                        if (arr.Contains(cmdArgs[1]))
+                        {
+                            list.Remove(cmdArgs[1]);
+                            string temp = "";
+                            foreach (string mod in list)
+                            {
+                                temp += $";{mod}";
+                            }
+
+                            var listchar = new List<char>(temp.ToCharArray());
+                            listchar.RemoveAt(0);
+
+                            string final = "";
+
+                            foreach (char c in listchar)
+                            {
+                                final += c;
+                            }
+
+                            File.WriteAllText($@"C:\Users\Admin\AppData\Local\Prelauncher\settings\folderconfigs\{modfolder}", final);
+                            
+                            Console.WriteLine("Successfully removed {0} from this mod folder\n", cmdArgs[1]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Mod \"{0}\" was not found in this mod folder\n", cmdArgs[1]);
+                        }
                         break;
 
                     case "list": // list all mods in current modfolder (obviously)

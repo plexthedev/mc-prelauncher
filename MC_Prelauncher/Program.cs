@@ -58,7 +58,7 @@ namespace MC_Prelauncher
                             Console.WriteLine("No modfolder specified.\n");
                             break;
                         }
-                        else if (!File.Exists($@"C:\Users\Admin\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}"))
+                        else if (!File.Exists($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}"))
                         {
                             Console.WriteLine("No such modfolder exists.\n");
                             break;
@@ -88,10 +88,10 @@ namespace MC_Prelauncher
                     case "listmods":
                         if (y.Length > 1)
                         {
-                            if (File.Exists($@"C:\Users\Admin\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}"))
+                            if (File.Exists($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}"))
                             {
                                 Console.WriteLine("Mods present in {0}:", y[1]);
-                                foreach (string modname in File.ReadAllText($@"C:\Users\Admin\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}").Split(';'))
+                                foreach (string modname in File.ReadAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}").Split(';'))
                                 {
                                     Console.WriteLine(modname);
                                 }
@@ -102,7 +102,7 @@ namespace MC_Prelauncher
                         else
                         {
                             Console.WriteLine("Mods present in {0}:", currentModFolder);
-                            foreach (string modname in File.ReadAllText($@"C:\Users\Admin\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{currentModFolder}").Split(';'))
+                            foreach (string modname in File.ReadAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{currentModFolder}").Split(';'))
                             {
                                 Console.WriteLine(modname);
                             }
@@ -112,7 +112,7 @@ namespace MC_Prelauncher
 
                     case "modfolders":
                         Console.Write("All present mod folders: ");
-                        foreach (string file in Directory.GetFiles(@"C:\Users\Admin\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs"))
+                        foreach (string file in Directory.GetFiles($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs"))
                         {
                             Console.Write(file.Split('\\').Last());
                         }

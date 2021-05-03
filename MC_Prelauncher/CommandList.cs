@@ -11,10 +11,10 @@ namespace MC_Prelauncher
     {
         public void setModFolder(string modFolderName)
         {
-            string ignoreListPath = "C:\\Users\\Admin\\AppData\\Roaming\\.minecraft\\Prelauncher\\settings\\ignore.dat";
-            string unusedStoragePath = "C:\\Users\\Admin\\AppData\\Roaming\\.minecraft\\Prelauncher\\mods";
-            string configPath = @"C:\Users\Admin\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs";
-            string modsPath = "C:\\Users\\Admin\\AppData\\Roaming\\.minecraft\\mods";
+            string ignoreListPath = $"C:\\Users\\{Environment.UserName}\\AppData\\Roaming\\.minecraft\\Prelauncher\\settings\\ignore.dat";
+            string unusedStoragePath = $"C:\\Users\\{Environment.UserName}\\AppData\\Roaming\\.minecraft\\Prelauncher\\mods";
+            string configPath = $@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs";
+            string modsPath = $"C:\\Users\\{Environment.UserName}\\AppData\\Roaming\\.minecraft\\mods";
 
             try
             {

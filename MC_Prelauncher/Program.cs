@@ -54,6 +54,7 @@ namespace MC_Prelauncher
                 {
                     // editmode
                     case "editmode":
+                        bool isnew = false;
                         if (y.Length <= 1)
                         {
                             Console.WriteLine("No modfolder specified.\n");
@@ -61,11 +62,17 @@ namespace MC_Prelauncher
                         }
                         else if (!File.Exists($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}"))
                         {
-                            Console.WriteLine("No such modfolder exists.\n");
-                            break;
+                            Console.Write("No such folder exists, create? (y/n) > "); string a = Console.ReadLine();
+                            if (a.ToLower() == "y")
+                            {
+                                var temp = File.Create($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}");
+                                temp.Close();
+                                isnew = true;
+                            }
+                            else break;
                         }
                         Editmode editmode = new Editmode();
-                        editmode.editmode(y[1]);
+                        editmode.editmode(y[1], isnew);
                         break;
                     // mod folder set
                     case "smf":
@@ -94,7 +101,7 @@ namespace MC_Prelauncher
                                 Console.WriteLine("Mods present in {0}:", y[1]);
                                 foreach (string modname in File.ReadAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}").Split(';'))
                                 {
-                                    Console.WriteLine(modname);
+                                    if (modname != "buffer") Console.WriteLine(modname);
                                 }
                                 Console.WriteLine();
                             }

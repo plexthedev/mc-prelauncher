@@ -9,7 +9,7 @@ namespace MC_Prelauncher
 {
     class Editmode
     {
-        public void editmode(string modfolder)
+        public void editmode(string modfolder, bool isnew)
         {
             Console.Clear();
             Console.Title = $"Minecraft Prelauncher: editmode {modfolder}";
@@ -27,17 +27,34 @@ namespace MC_Prelauncher
                         {
                             if (File.Exists($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\mods\{cmdArgs[1]}") || File.Exists($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\mods\{cmdArgs[1]}"))
                             {
-                                string[] modslist = File.ReadAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{modfolder}").Split(';');
-                                if (modslist.Contains(cmdArgs[1]))
+                                if (!isnew)
                                 {
-                                    Console.WriteLine("This mod is already present\n");
-                                    break;
+                                    if (File.ReadAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{modfolder}") == "")
+                                    {
+                                        File.WriteAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{modfolder}", cmdArgs[1] + ";buffer");
+                                        Console.WriteLine($"Successfully added {cmdArgs[1]} to {modfolder}\n");
+                                    }
+                                    else
+                                    {
+                                        string[] modslist = File.ReadAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{modfolder}").Split(';');
+                                        if (modslist.Contains(cmdArgs[1]))
+                                        {
+                                            Console.WriteLine("This mod is already present\n");
+                                            break;
+                                        }
+                                        modslist = modslist.Reverse().Skip(1).Reverse().ToArray();
+                                        List<string> temp = new List<string>(modslist); temp.Add(cmdArgs[1] + ";buffer");
+                                        modslist = temp.ToArray();
+                                        File.WriteAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{modfolder}", String.Join(";", modslist));
+                                        Console.WriteLine($"Successfully added {cmdArgs[1]} to {modfolder}\n");
+                                    }
                                 }
-                                modslist = modslist.Reverse().Skip(1).Reverse().ToArray();
-                                List<string> temp = new List<string>(modslist); temp.Add(cmdArgs[1] + ";buffer");
-                                modslist = temp.ToArray();
-                                File.WriteAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{modfolder}", String.Join(";", modslist));
-                                Console.WriteLine($"Successfully added {cmdArgs[1]} to {modfolder}\n");
+                                else
+                                {
+                                    File.WriteAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{modfolder}", cmdArgs[1] + ";buffer");
+                                    Console.WriteLine($"Successfully added {cmdArgs[1]} to {modfolder}\n");
+                                    isnew = false; // this is here so it doesnt do this method more than once xd
+                                }
                             }
                             else
                             {

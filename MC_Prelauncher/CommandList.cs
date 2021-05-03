@@ -42,7 +42,11 @@ namespace MC_Prelauncher
                             }
                             else
                             {
-                                if (mod != "buffer") Console.WriteLine("{0} not found, skipping", mod);
+                                if (mod != "buffer")
+                                {
+                                    Console.Write("{0} not found, skipping (Enter to continue)", mod);
+                                    Console.ReadLine();
+                                }
                             }
                         }
                     }

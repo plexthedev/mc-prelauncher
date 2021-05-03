@@ -20,22 +20,13 @@ namespace MC_Prelauncher
 
                 foreach (string modfile in Directory.GetFiles(modFolder))
                 {
-                    string modFileEnd = modfile.Split('\\').Last();     
-                    if (modsIndex.Contains(modFileEnd))
-                    {
-                        I_HATE_THE_GAYS++;
-                    }
+                    string modFileEnd = modfile.Split('\\').Last();
+                    if (modsIndex.Contains(modFileEnd)) I_HATE_THE_GAYS++;
                 }
-
-                if (I_HATE_THE_GAYS == arraysize)
-                {
-                    return true;
-                }
+                if (modsIndex.Contains("buffer")) I_HATE_THE_GAYS++;
+                if (I_HATE_THE_GAYS == arraysize) return true;
             }
-            else
-            {
-                return false;
-            }
+            else return false;
             return false;
         }
 

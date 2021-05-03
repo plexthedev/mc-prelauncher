@@ -44,6 +44,7 @@ namespace MC_Prelauncher
 
             while (true)
             {
+                Console.Title = "Minecraft Prelauncher";
                 Console.Write("$ "); string x = Console.ReadLine();
 
                 string[] y = x.Split(' ');

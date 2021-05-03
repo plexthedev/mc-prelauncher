@@ -29,20 +29,20 @@ namespace MC_Prelauncher
                             string filenameraw = mod.Split('\\').Last();
                             string[] ignorelist = File.ReadAllText(ignoreListPath).Split(';');
 
-                            if (!ignorelist.Contains(filenameraw))
+                            if (!ignorelist.Contains(filenameraw) && filenameraw != "buffer")
                             {
                                 File.Move(mod, unusedStoragePath + "\\" + filenameraw);
                             }
                         }
                         foreach (string mod in allmods)
                         {
-                            if (File.Exists(unusedStoragePath + "\\" + mod))
+                            if (File.Exists(unusedStoragePath + "\\" + mod) && mod != "buffer")
                             {
                                 File.Move(unusedStoragePath + "\\" + mod, modsPath + "\\" + mod);
                             }
                             else
                             {
-                                Console.WriteLine("{0} not found, skipping", mod);
+                                if (mod != "buffer") Console.WriteLine("{0} not found, skipping", mod);
                             }
                         }
                     }

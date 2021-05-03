@@ -119,16 +119,15 @@ namespace MC_Prelauncher
                         break;
 
                     case "modfolders":
-                        Console.Write("All present mod folders: ");
+                        Console.Write("All present mod folders:\n");
                         foreach (string file in Directory.GetFiles($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs"))
                         {
-                            Console.Write(file.Split('\\').Last());
+                            Console.Write(file.Split('\\').Last() + "\n");
                         }
-                        Console.WriteLine();
                         break;
 
                     case "help":
-                        Commands.help(y[1]);
+                        Commands.help(y);
                         break;
 
                     case "exit":

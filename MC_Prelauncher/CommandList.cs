@@ -59,18 +59,42 @@ namespace MC_Prelauncher
             }
         }
 
-        public void help(string arg)
+        public void help(string[] args)
         {
-            if (arg == null)
+            if (args.Length <= 1)
             {
-                // do some shit over here
+                Console.WriteLine(
+                    "setmodfolder/smf - sets the modfolder\n" +
+                    "editmode - enters editmode for a modfolder\n" +
+                    "listmods - lists mods in current modfolder\n" +
+                    "modfolders - lists all modfolders\n" +
+                    "help [command] - gives more info about a command\n" +
+                    "launch - starts Minecraft Launcher\n" +
+                    "exit - closes the prelauncher\n"
+                    );
             }
             else
             {
-                switch (arg)
+                switch (args[1])
                 {
                     case "setmodfolder":
-                        Console.WriteLine("Usage - setmodfolder (folder) - folder has to be registered in root/settings/folderconfigs\n"); // gay explanation, remove after installer done
+                        Console.WriteLine("Usage - setmodfolder (folder) - Sets your modfolder (to create a new modfolder, use the editmode command with an unused modfolder name)\nAliases: smf\n");
+                        break;
+
+                    case "smf":
+                        Console.WriteLine("Usage - setmodfolder (folder) - Sets your modfolder (to create a new modfolder, use the editmode command with an unused modfolder name)\nAliases: smf\n");
+                        break;
+
+                    case "editmode":
+                        Console.WriteLine("Usage - editmode (folder) - Enters editmode for the specified modfolder (and creates a new one if it doesnt exist)\nNOTE: Instructions for editmode are in the README.md file that came with this program\n");
+                        break;
+
+                    case "listmods":
+                        Console.WriteLine("Usage - listmods (folder) - Lists all the mods in a specified modfolder");
+                        break;
+
+                    case "modfolders":
+                        Console.WriteLine("Usage - modfolders - Lists all existing modfolders");
                         break;
 
                     case "help":
@@ -78,7 +102,11 @@ namespace MC_Prelauncher
                         break;
 
                     case "launch":
-                        Console.WriteLine("Usage - launch (args) - launches the launcher, args do nothing rn");
+                        Console.WriteLine("Usage - launch - starts the regular Minecraft Launcher");
+                        break;
+
+                    case "exit":
+                        Console.WriteLine("Usage - exit - closes the prelauncher, does not start the regular launcher");
                         break;
                 }
             }

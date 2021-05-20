@@ -39,7 +39,7 @@ namespace MC_Prelauncher
             string currentModFolder = GetModFolder.CompareCurrent();
 
             string pathToLauncher = "C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe";
-            Console.WriteLine("Minecraft Pre-launcher by Trollsta_");
+            Console.WriteLine("Minecraft Pre-launcher by PlexTheDev");
             Console.WriteLine("Current mod folder: {0}", currentModFolder);
 
             while (true)
@@ -73,6 +73,17 @@ namespace MC_Prelauncher
                         }
                         Editmode editmode = new Editmode();
                         editmode.editmode(y[1], isnew);
+                        break;
+
+                    case "remove":
+                        if (File.Exists($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}"))
+                        {
+                            Console.Write("This action is irreversible, continue? (y/n) > "); string gays = Console.ReadLine();
+                            if (gays.ToLower() != "y") break;
+                            File.Delete($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{y[1]}");
+                            Console.WriteLine("Successfully deleted {0}\n", y[1]);
+                        }
+                        else Console.WriteLine("Modfolder {0} does not exist\n", y[1]);
                         break;
                     // mod folder set
                     case "smf":
@@ -112,7 +123,7 @@ namespace MC_Prelauncher
                             Console.WriteLine("Mods present in {0}:", currentModFolder);
                             foreach (string modname in File.ReadAllText($@"C:\Users\{Environment.UserName}\AppData\Roaming\.minecraft\Prelauncher\settings\folderconfigs\{currentModFolder}").Split(';'))
                             {
-                                Console.WriteLine(modname);
+                                if (modname != "buffer") Console.WriteLine(modname);
                             }
                             Console.WriteLine();
                         }

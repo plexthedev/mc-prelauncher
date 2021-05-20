@@ -113,7 +113,7 @@ namespace MC_Prelauncher
                         Console.Clear();
                         ModFolderDetect GetModFolder = new ModFolderDetect();
                         string currentModFolder = GetModFolder.CompareCurrent();
-                        Console.WriteLine("Minecraft Pre-launcher by Trollsta_");
+                        Console.WriteLine("Minecraft Pre-launcher by PlexTheDev");
                         Console.WriteLine("Current mod folder: {0}", currentModFolder);
                         return;
                 }
